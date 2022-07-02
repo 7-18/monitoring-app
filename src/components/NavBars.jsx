@@ -21,13 +21,10 @@ export const NavBars = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="align-items-center w-100 justify-content-around">
-            <span className="text-lg-center text-muted d-flex flex-column align-items-center">
+            <span className="d-none d-lg-flex text-lg-center text-muted d-flex flex-column align-items-center">
               <CgProfile />
-              <small style={{ fontSize: "10px" }}>Coordinador</small>
-              <small
-                style={{ fontSize: "10px", width: "40px" }}
-                className="text-truncate"
-              >
+              <small>Coordinador</small>
+              <small style={{ width: "40px" }} className="text-truncate">
                 Kevin Briceño
               </small>
             </span>
@@ -35,7 +32,7 @@ export const NavBars = () => {
               <NavDropdown
                 title="Monitores"
                 id="collasible-nav-dropdown"
-                className="me-lg-5"
+                className="me-lg-5 me-0"
               >
                 <NavDropdown.Item
                   className="text-lg-center text-muted py-lg-2"
@@ -80,10 +77,23 @@ export const NavBars = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <span className="text-lg-center text-muted d-flex flex-column align-items-center">
+            <span className="d-none d-lg-flex text-lg-center text-muted d-flex flex-column align-items-center logout">
               <FiLogOut />
-              <small style={{ fontSize: "10px" }}>Logout</small>
+              <small>Logout</small>
             </span>
+            <div className="d-flex d-lg-none gap-5 my-3">
+              <span className="text-lg-center text-muted d-flex flex-column align-items-center">
+                <CgProfile />
+                <small>Coordinador</small>
+                <small style={{ width: "40px" }} className="text-truncate">
+                  Kevin Briceño
+                </small>
+              </span>
+              <span className="text-lg-center text-muted d-flex flex-column align-items-center">
+                <FiLogOut />
+                <small>Logout</small>
+              </span>
+            </div>
           </Nav>
         </Navbar.Collapse>
       </Container>

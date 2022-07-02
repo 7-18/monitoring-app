@@ -10,3 +10,11 @@ body {
   font-family: "Raleway", sans-serif;
   letter-spacing: -0.3px;
 }
+
+small {
+  font-size: 10px;
+}
+
+.logout:hover {
+  transform: scale(1.1);
+}
