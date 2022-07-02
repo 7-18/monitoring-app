@@ -1,28 +1,30 @@
+import { typesMonitors } from "../types/types";
+
 const initialState = {
   monitors: [],
 };
 
 export const monitorsReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.ADD_MONITOR:
+    case typesMonitors.ADD_MONITOR:
       return {
         monitors: [...state.monitors, action.payload],
       };
-    case types.GET_MONITORS:
+    case typesMonitors.GET_MONITORS:
       return {
         monitors: [...action.payload],
       };
-    case types.DELETE_MONITOR:
+    case typesMonitors.DELETE_MONITOR:
       return {
         monitors: state.monitors.filter(
           (monitor) => monitor.id !== action.payload
         ),
       };
-    case types.UPDATE_MONITOR:
+    case typesMonitors.UPDATE_MONITOR:
       return {
         monitors: [...state.monitors],
       };
-    case types.SEARCH_MONITORS:
+    case typesMonitors.SEARCH_MONITORS:
       return {
         monitors: action.payload,
       };
