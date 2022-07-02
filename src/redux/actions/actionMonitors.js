@@ -1,4 +1,11 @@
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  where,
+} from "firebase/firestore";
 import { db } from "../../firebase/firebase.config";
 import { typesMonitors } from "../types/types";
 
@@ -31,9 +38,11 @@ const getMonitorSync = (monitors) => {
 
 export const getMonitorsAsync = () => {
   return async (dispatch) => {
-    const collectionMonitors = await getDocs(collection(db, "monitors"));
+    const collectionMonitors = collection(db, "monitors");
+    const q = query(collectionMonitors, orderBy("name", "asc"));
+    const orderMonitors = await getDocs(q);
     const monitors = [];
-    collectionMonitors.forEach((monitor) => {
+    orderMonitors.forEach((monitor) => {
       monitors.push({
         ...monitor.data(),
       });
