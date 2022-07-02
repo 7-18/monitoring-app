@@ -1,7 +1,10 @@
 import { Button } from "react-bootstrap";
 import { useForm } from "../hooks/useForm";
+import { useDispatch } from "react-redux";
+import { addMonitorAsync } from "../redux/actions/actionMonitors";
 
 export const AddMonitors = () => {
+  const dispatch = useDispatch();
   const [formValues, handleInputChange, reset] = useForm({
     name: "",
     lastName: "",
@@ -15,6 +18,7 @@ export const AddMonitors = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formValues);
+    dispatch(addMonitorAsync(formValues));
     reset();
   };
 
