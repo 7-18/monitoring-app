@@ -7,7 +7,7 @@ import {
 } from "firebase/auth";
 import { typesLogin, typesRegister } from "../types/types";
 
-const actionRegisterUserSync = (name, email, password) => {
+const registerUserSync = (name, email, password) => {
   return {
     type: typesRegister.REGISTER,
     payload: {
@@ -18,7 +18,7 @@ const actionRegisterUserSync = (name, email, password) => {
   };
 };
 
-export const actionRegisterUserAsync = (name, email, password) => {
+export const registerUserAsync = (name, email, password) => {
   return (dispatch) => {
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
@@ -26,7 +26,7 @@ export const actionRegisterUserAsync = (name, email, password) => {
         await updateProfile(auth.currentUser, {
           displayName: name,
         });
-        dispatch(actionRegisterUserSync(name, email, password));
+        dispatch(registerUserSync(name, email, password));
       })
       .catch((error) => {
         console.warn(error, "Coordinador no autorizado");
@@ -55,18 +55,18 @@ export const loginUserAsync = (email, password) => {
   };
 };
 
-const actionLogoutUserSync = () => {
+const logoutUserSync = () => {
   return {
     type: typesLogin.LOGOUT,
   };
 };
 
-export const actionLogoutUserAsync = () => {
+export const logoutUserAsync = () => {
   return (dispatch) => {
     const auth = getAuth();
     signOut(auth)
       .then(({ user }) => {
-        dispatch(actionLogoutUserSync());
+        dispatch(logoutUserSync());
       })
       .catch((error) => {
         console.warn(error);
@@ -79,7 +79,7 @@ export const loginGoogle = () => {
     const auth = getAuth();
     signInWithPopup(auth, google)
       .then(async ({ user }) => {
-        dispatch(actionRegisterUserSync(user.displayName, user.email));
+        dispatch(registerUserSync(user.displayName, user.email));
       })
       .catch((error) => {
         console.warn("Coordinador no autorizado", error);
@@ -92,7 +92,7 @@ export const loginFacebook = () => {
     const auth = getAuth();
     signInWithPopup(auth, facebook)
       .then(({ user }) => {
-        dispatch(actionRegisterUserSync(user.displayName, user.email));
+        dispatch(registerUserSync(user.displayName, user.email));
       })
       .catch((error) => {
         console.warn("Coordinador no autorizado", error);
