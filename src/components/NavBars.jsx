@@ -37,14 +37,14 @@ export const NavBars = () => {
                 <NavDropdown.Item
                   className="text-lg-center text-muted py-lg-2"
                   as={Link}
-                  to="/monitors"
+                  to="/list-monitors"
                 >
                   Ver monitores
                 </NavDropdown.Item>
                 <NavDropdown.Item
                   className="text-lg-center text-muted py-lg-2"
                   as={Link}
-                  to="/monitors"
+                  to="/add-monitors"
                 >
                   Agregar monitores
                 </NavDropdown.Item>

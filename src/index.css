@@ -18,3 +18,9 @@ small {
 .logout:hover {
   transform: scale(1.1);
 }
+
+a:active,
+a:focus {
+  outline: none;
+  background: transparent !important;
+}

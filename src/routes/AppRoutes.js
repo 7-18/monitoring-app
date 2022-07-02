@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AddMonitors } from "../components/AddMonitors";
 import { CreateMonitoring } from "../components/CreateMonitoring";
+import { MonitorsList } from "../components/MonitorsList";
 import { NavBars } from "../components/NavBars";
 
 export const AppRoutes = () => {
@@ -9,7 +10,8 @@ export const AppRoutes = () => {
       <NavBars />
       <Routes>
         <Route path="/" element={<h1>Hola</h1>} />
-        <Route path="/monitors" element={<AddMonitors />} />
+        <Route path="/add-monitors" element={<AddMonitors />} />
+        <Route path="/list-monitors" element={<MonitorsList />} />
         <Route path="/monitoring" element={<CreateMonitoring />} />
       </Routes>
     </BrowserRouter>

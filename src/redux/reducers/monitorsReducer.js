@@ -10,7 +10,7 @@ export const monitorsReducer = (state = initialState, action) => {
       return {
         monitors: [...state.monitors, action.payload],
       };
-    case typesMonitors.GET_MONITORS:
+    case typesMonitors.LIST_MONITORS:
       return {
         monitors: [...action.payload],
       };

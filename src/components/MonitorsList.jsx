@@ -6,6 +6,8 @@ export const MonitorsList = () => {
   const dispatch = useDispatch();
   const { monitors } = useSelector((state) => state.monitors);
 
+  console.log(monitors);
+
   useEffect(() => {
     dispatch(getMonitorsAsync());
   }, []);
@@ -22,6 +24,7 @@ export const MonitorsList = () => {
             <th>Semestre</th>
             <th>Email</th>
             <th>Teléfono</th>
+            <th>Cédula</th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +36,7 @@ export const MonitorsList = () => {
               <td>{monitor.semester}</td>
               <td>{monitor.email}</td>
               <td>{monitor.phone}</td>
+              <td>{monitor.id}</td>
             </tr>
           ))}
         </tbody>

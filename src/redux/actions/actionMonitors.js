@@ -24,7 +24,7 @@ export const addMonitorAsync = (monitor) => {
 
 const getMonitorSync = (monitors) => {
   return {
-    type: typesMonitors.GET_MONITORS,
+    type: typesMonitors.LIST_MONITORS,
     payload: monitors,
   };
 };
