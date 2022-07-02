@@ -10,6 +10,7 @@ export const CreateMonitoring = () => {
   const [formValues, handleInputChange, reset] = useForm({
     subject: "",
     monitor: "",
+    monitor_id: "",
     date: "",
     classroom: "",
   });
@@ -37,9 +38,12 @@ export const CreateMonitoring = () => {
           value={formValues.subject}
         />
         <select name="monitor" id="monitor" onChange={handleInputChange}>
-          <option value="">Seleccione un monitor</option>
+          <option value="*">Seleccione un monitor</option>
           {monitors.map((monitor) => (
-            <option key={monitor.id} value={monitor.id}>
+            <option
+              key={monitor.id}
+              value={monitor.name + " " + monitor.lastName}
+            >
               {monitor.name} {monitor.lastName}
             </option>
           ))}

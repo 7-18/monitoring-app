@@ -6,8 +6,6 @@ export const MonitorsList = () => {
   const dispatch = useDispatch();
   const { monitors } = useSelector((state) => state.monitors);
 
-  console.log(monitors);
-
   useEffect(() => {
     dispatch(getMonitorsAsync());
   }, []);
