@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "../hooks/useForm";
+import { addMonitoringAsync } from "../redux/actions/actionMonitoring";
 import { getMonitorsAsync } from "../redux/actions/actionMonitors";
 
 export const CreateMonitoring = () => {
@@ -22,6 +23,7 @@ export const CreateMonitoring = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formValues);
+    dispatch(addMonitoringAsync(formValues));
     reset();
   };
 
