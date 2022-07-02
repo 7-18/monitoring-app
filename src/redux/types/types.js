@@ -12,6 +12,7 @@ export const typesMonitors = {
   ADD_MONITOR: "ADD MONITOR",
   DELETE_MONITOR: "DELETE MONITOR",
   UPDATE_MONITOR: "UPDATE MONITOR",
+  SEARCH_MONITORS: "SEARCH MONITORS",
 };
 
 export const typesMonitoring = {

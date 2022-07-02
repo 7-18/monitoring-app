@@ -22,6 +22,10 @@ export const monitorsReducer = (state = initialState, action) => {
       return {
         monitors: [...state.monitors],
       };
+    case types.SEARCH_MONITORS:
+      return {
+        monitors: action.payload,
+      };
     default:
       return state;
   }
