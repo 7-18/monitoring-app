@@ -37,15 +37,15 @@ export const NavBars = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="align-items-center w-100 justify-content-around">
             <span className="d-none d-lg-flex text-lg-center text-muted d-flex flex-column align-items-center">
-              {profile?.photoURL !== undefined || null ? (
+              {profile?.photoURL == undefined || null ? (
+                <CgProfile />
+              ) : (
                 <img
                   src={profile?.photoURL}
                   alt="profile"
                   width={20}
                   className="rounded-circle"
                 />
-              ) : (
-                <CgProfile />
               )}
               <small>Coordinador</small>
               <small style={{ width: "40px" }} className="text-truncate">
@@ -105,15 +105,15 @@ export const NavBars = () => {
             </span>
             <div className="d-flex d-lg-none gap-5 my-3">
               <span className="text-lg-center text-muted d-flex flex-column align-items-center">
-                {profile?.photoURL !== undefined || null ? (
+                {profile?.photoURL == undefined || null ? (
+                  <CgProfile />
+                ) : (
                   <img
                     src={profile?.photoURL}
                     alt="profile"
                     width={20}
                     className="rounded-circle"
                   />
-                ) : (
-                  <CgProfile />
                 )}
                 <small>Coordinador</small>
                 <small style={{ width: "40px" }} className="text-truncate">

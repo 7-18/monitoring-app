@@ -6,7 +6,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { google, facebook } from "../../firebase/firebase.config";
+import { google, facebook, auth } from "../../firebase/firebase.config";
 import { typesLogin, typesRegister } from "../types/types";
 
 const registerUserSync = (name, email, password) => {
@@ -22,7 +22,6 @@ const registerUserSync = (name, email, password) => {
 
 export const registerUserAsync = (name, email, password) => {
   return (dispatch) => {
-    const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
       .then(async ({ user }) => {
         await updateProfile(auth.currentUser, {
@@ -46,7 +45,6 @@ const loginUserSync = (email, password) => ({
 
 export const loginUserAsync = (email, password) => {
   return (dispatch) => {
-    const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
       .then(async ({ user }) => {
         dispatch(loginUserSync(email, password));
@@ -65,7 +63,6 @@ const logoutUserSync = () => {
 
 export const logoutUserAsync = () => {
   return (dispatch) => {
-    const auth = getAuth();
     signOut(auth)
       .then(({ user }) => {
         dispatch(logoutUserSync());
@@ -78,7 +75,6 @@ export const logoutUserAsync = () => {
 
 export const loginGoogle = () => {
   return (dispatch) => {
-    const auth = getAuth();
     signInWithPopup(auth, google)
       .then(async ({ user }) => {
         dispatch(registerUserSync(user.displayName, user.email));
@@ -91,7 +87,6 @@ export const loginGoogle = () => {
 
 export const loginFacebook = () => {
   return (dispatch) => {
-    const auth = getAuth();
     signInWithPopup(auth, facebook)
       .then(({ user }) => {
         dispatch(registerUserSync(user.displayName, user.email));
