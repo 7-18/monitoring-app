@@ -94,7 +94,7 @@ export const loginFacebook = () => {
     const auth = getAuth();
     signInWithPopup(auth, facebook)
       .then(({ user }) => {
-        dispatch(registerUserSync(user.displayName, user.email));
+        dispatch(registerUserSync(user.displayName, user.email, user.photoURL));
       })
       .catch((error) => {
         console.warn("Coordinador no autorizado", error);

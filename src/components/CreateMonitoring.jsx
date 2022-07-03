@@ -65,7 +65,7 @@ export const CreateMonitoring = () => {
             </option>
           ))}
         </select>
-        <Button type="submit">Crear</Button>
+        <Button type="submit" onClick={handleSubmit}>Crear</Button>
       </form>
     </div>
   );

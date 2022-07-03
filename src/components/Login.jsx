@@ -10,21 +10,40 @@ import logo from "../assets/images/logo.png";
 import google from "../assets/images/google.png";
 import facebook from "../assets/images/facebook.png";
 import { FloatingLabel } from "react-bootstrap";
-import { loginFacebook, loginGoogle } from "../redux/actions/actionUser";
+import {
+  loginFacebook,
+  loginGoogle,
+  loginUserAsync,
+} from "../redux/actions/actionUser";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useForm } from "../hooks/useForm";
 
 export const Login = () => {
   const dispatch = useDispatch();
+  const [formValues, handleInputChange, reset] = useForm({
+    email: "",
+    password: "",
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(formValues);
+    dispatch(loginUserAsync(formValues));
+    reset();
+  };
+
   return (
     <DivLogin>
-      <FormLogin>
+      <FormLogin onSubmit={handleSubmit}>
         <img src={logo} width={130} height={130} />
         <FloatingLabel label="Correo electrónico" className="inputLogin">
           <InputLogin
             type="email"
             name="email"
             placeholder="ejemplo@correo.com"
+            onChange={handleInputChange}
+            value={formValues.email}
           />
         </FloatingLabel>
         <FloatingLabel label="Contraseña" className="inputLogin">
@@ -32,9 +51,11 @@ export const Login = () => {
             type="password"
             name="password"
             placeholder="contraseña"
+            onChange={handleInputChange}
+            value={formValues.password}
           />
         </FloatingLabel>
-        <ButtonLogin type="submit">Ingresar</ButtonLogin>
+        <ButtonLogin type="submit" onClick={handleSubmit}>Ingresar</ButtonLogin>
         <small>¿Olvidaste tu contraseña?</small>
         <SignWithAnother>
           <span>o</span>
@@ -54,7 +75,9 @@ export const Login = () => {
             <span>Continuar con Facebook</span>
           </button>
         </SignInWithButton>
-        <small>¿No tienes cuenta? <Link to="/signup">Regístrate</Link></small>
+        <small>
+          ¿No tienes cuenta? <Link to="/signup">Regístrate</Link>
+        </small>
       </FormLogin>
     </DivLogin>
   );

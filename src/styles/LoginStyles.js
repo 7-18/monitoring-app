@@ -102,7 +102,7 @@ export const SignInWithButton = styled.div`
     &:hover,
     &:focus,
     &:active {
-      transform: scale(1.01);
+      transform: scale(1.02);
     }
 
     & > span {

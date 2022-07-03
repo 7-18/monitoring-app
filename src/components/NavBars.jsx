@@ -9,9 +9,21 @@ import { FiLogOut } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { logoutUserAsync } from "../redux/actions/actionUser";
+import { useEffect, useState } from "react";
+import { getAuth } from "firebase/auth";
 
 export const NavBars = () => {
   const dispatch = useDispatch();
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    if (user) {
+      setProfile(user);
+    }
+  }, []);
+
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" className="flex-column">
       <Container fluid className="justify-content-center">
@@ -25,10 +37,19 @@ export const NavBars = () => {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="align-items-center w-100 justify-content-around">
             <span className="d-none d-lg-flex text-lg-center text-muted d-flex flex-column align-items-center">
-              <CgProfile />
+              {profile?.photoURL !== undefined || null ? (
+                <img
+                  src={profile?.photoURL}
+                  alt="profile"
+                  width={20}
+                  className="rounded-circle"
+                />
+              ) : (
+                <CgProfile />
+              )}
               <small>Coordinador</small>
               <small style={{ width: "40px" }} className="text-truncate">
-                Kevin Briceño
+                {profile?.displayName}
               </small>
             </span>
             <Nav className="align-items-center" style={{ marginLeft: "-25px" }}>
@@ -75,16 +96,28 @@ export const NavBars = () => {
                 </NavDropdown.Item>
               </NavDropdown>
             </Nav>
-            <span className="d-none d-lg-flex text-lg-center text-muted d-flex flex-column align-items-center logout">
+            <span
+              className="d-none d-lg-flex text-lg-center text-muted d-flex flex-column align-items-center logout"
+              onClick={() => dispatch(logoutUserAsync())}
+            >
               <FiLogOut />
               <small>Salir</small>
             </span>
             <div className="d-flex d-lg-none gap-5 my-3">
               <span className="text-lg-center text-muted d-flex flex-column align-items-center">
-                <CgProfile />
+                {profile?.photoURL !== undefined || null ? (
+                  <img
+                    src={profile?.photoURL}
+                    alt="profile"
+                    width={20}
+                    className="rounded-circle"
+                  />
+                ) : (
+                  <CgProfile />
+                )}
                 <small>Coordinador</small>
                 <small style={{ width: "40px" }} className="text-truncate">
-                  Kevin Briceño
+                  {profile?.displayName}
                 </small>
               </span>
               <span

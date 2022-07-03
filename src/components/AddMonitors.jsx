@@ -88,7 +88,9 @@ export const AddMonitors = () => {
             onChange={handleInputChange}
             value={formValues.phone}
           />
-          <Button type="submit">Agregar</Button>
+          <Button type="submit" onClick={handleSubmit}>
+            Agregar
+          </Button>
         </form>
       </div>
       <MonitorsList />
