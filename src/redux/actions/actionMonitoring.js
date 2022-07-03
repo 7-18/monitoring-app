@@ -20,6 +20,7 @@ export const addMonitoringAsync = (monitoring) => {
     addDoc(collection(db, "monitoring"), monitoring)
       .then((doc) => {
         dispatch(addMonitoringSync(monitoring));
+        dispatch(getMonitoringAsync());
       })
       .catch((error) => {
         console.log(error);

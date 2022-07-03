@@ -10,8 +10,6 @@ export const Monitoring = () => {
     dispatch(getMonitoringAsync());
   }, []);
 
-  console.log(subjects);
-
   return (
     <div>
       <div>Monitorías</div>

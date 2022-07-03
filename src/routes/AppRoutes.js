@@ -13,8 +13,8 @@ export const AppRoutes = () => {
         <Route path="/" element={<h1>Hola</h1>} />
         <Route path="/add-monitors" element={<AddMonitors />} />
         <Route path="/list-monitors" element={<MonitorsList />} />
-        <Route path="/monitoring" element={<CreateMonitoring />} />
-        <Route path="/monitoring-list" element={<Monitoring />} />
+        <Route path="/create-monitoring" element={<CreateMonitoring />} />
+        <Route path="/list-monitoring" element={<Monitoring />} />
       </Routes>
     </BrowserRouter>
   );

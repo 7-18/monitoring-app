@@ -1,4 +1,14 @@
-import { addDoc, collection, getDocs, orderBy, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { db } from "../../firebase/firebase.config";
 import { typesMonitors } from "../types/types";
 
@@ -69,3 +79,50 @@ export const getMonitorsAsync = () => {
 //     dispatch(searchMonitorSync(monitors));
 //   };
 // };
+
+export const editMonitorSync = (monitor) => {
+  return {
+    type: typesMonitors.UPDATE_MONITOR,
+    payload: monitor,
+  };
+};
+
+export const editMonitorAsync = (monitor) => {
+  return async (dispatch) => {
+    const collectionMonitors = collection(db, "monitors");
+    const q = query(collectionMonitors, where("email", "==", monitor.email));
+    const data = await getDocs(q);
+    let id = "";
+    data.forEach(async (monitor) => {
+      id = monitor.id;
+    });
+    const docRef = doc(db, "monitors", id);
+    await updateDoc(docRef, monitor)
+      .then(() => {
+        dispatch(editMonitorSync(monitor));
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    dispatch(getMonitorsAsync());
+  };
+};
+
+const deleteMonitorSync = (monitor) => {
+  return {
+    type: typesMonitors.DELETE_MONITOR,
+    payload: monitor,
+  };
+};
+
+export const deleteMonitorAsync = (monitor) => {
+  return async (dispatch) => {
+    const collectionMonitors = collection(db, "monitors");
+    const q = query(collectionMonitors, where("email", "==", monitor.email));
+    const data = await getDocs(q);
+    data.forEach((monitor) => {
+      deleteDoc(doc(db, "monitors", monitor.id));
+    });
+    dispatch(deleteMonitorSync(monitor));
+  };
+};

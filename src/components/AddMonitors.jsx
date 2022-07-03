@@ -3,6 +3,7 @@ import { useForm } from "../hooks/useForm";
 import { useDispatch } from "react-redux";
 import { addMonitorAsync } from "../redux/actions/actionMonitors";
 import { MonitorsList } from "./MonitorsList";
+import { academic_programs, semesters } from "../data/data";
 
 export const AddMonitors = () => {
   const dispatch = useDispatch();
@@ -18,7 +19,6 @@ export const AddMonitors = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
     dispatch(addMonitorAsync(formValues));
     reset();
   };
@@ -44,24 +44,26 @@ export const AddMonitors = () => {
             onChange={handleInputChange}
             value={formValues.lastName}
           />
-          <label htmlFor="academic_program">Programa Académico</label>
-          <input
-            type="text"
+          <select
             name="academic_program"
             id="academic_program"
             onChange={handleInputChange}
-            value={formValues.academic_program}
-          />
-          <label htmlFor="semester">Semestre</label>
-          <input
-            type="text"
-            name="semester"
-            id="semester"
-            onChange={handleInputChange}
-            value={formValues.semester}
-            maxLength="2"
-            minLength="1"
-          />
+          >
+            <option value="">Programa académico</option>
+            {academic_programs.map((academic_program) => (
+              <option key={academic_program.id} value={academic_program.name}>
+                {academic_program.name}
+              </option>
+            ))}
+          </select>
+          <select name="semester" id="semester" onChange={handleInputChange}>
+            <option value="">Semestre</option>
+            {semesters.map((semester) => (
+              <option key={semester.id} value={semester.name}>
+                {semester.name}
+              </option>
+            ))}
+          </select>
           <label htmlFor="id">Cédula</label>
           <input
             type="number"

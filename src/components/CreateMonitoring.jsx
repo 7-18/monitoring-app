@@ -22,7 +22,6 @@ export const CreateMonitoring = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
     dispatch(addMonitoringAsync(formValues));
     reset();
   };
