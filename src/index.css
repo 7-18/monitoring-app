@@ -28,3 +28,8 @@ a:focus {
   outline: none;
   background: transparent !important;
 }
+
+.inputLogin {
+  width: 100%;
+  margin: 10px;
+}
