@@ -64,7 +64,7 @@ export const NavBars = () => {
                 <NavDropdown.Item
                   className="text-lg-center text-muted py-lg-2"
                   as={Link}
-                  to="/monitoring"
+                  to="/monitoring-list"
                 >
                   Ver monitorías
                 </NavDropdown.Item>

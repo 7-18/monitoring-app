@@ -59,7 +59,7 @@ export const CreateMonitoring = () => {
           value={formValues.date}
         />
         <select name="classroom" id="classroom" onChange={handleInputChange}>
-          <option value="*">Seleccione un salón de clases</option>
+          <option value="*">Seleccione el salón de clases</option>
           {classrooms.map((classroom) => (
             <option key={classroom.id} value={classroom.name}>
               {classroom.name}
