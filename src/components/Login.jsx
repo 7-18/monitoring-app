@@ -34,7 +34,7 @@ export const Login = () => {
             placeholder="contraseña"
           />
         </FloatingLabel>
-        <ButtonLogin type="submit">Login</ButtonLogin>
+        <ButtonLogin type="submit">Ingresar</ButtonLogin>
         <small>¿Olvidaste tu contraseña?</small>
         <SignWithAnother>
           <span>o</span>
@@ -54,7 +54,7 @@ export const Login = () => {
             <span>Continuar con Facebook</span>
           </button>
         </SignInWithButton>
-        <small>¿No tienes cuenta? <Link to="/register">Regístrate</Link></small>
+        <small>¿No tienes cuenta? <Link to="/signup">Regístrate</Link></small>
       </FormLogin>
     </DivLogin>
   );

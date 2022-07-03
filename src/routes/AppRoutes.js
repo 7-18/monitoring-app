@@ -5,6 +5,7 @@ import { Login } from "../components/Login";
 import { Monitoring } from "../components/Monitoring";
 import { MonitorsList } from "../components/MonitorsList";
 import { NavBars } from "../components/NavBars";
+import { SignUp } from "../components/SignUp";
 
 export const AppRoutes = () => {
   return (
@@ -12,6 +13,7 @@ export const AppRoutes = () => {
       <NavBars />
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
         <Route path="/add-monitors" element={<AddMonitors />} />
         <Route path="/list-monitors" element={<MonitorsList />} />
         <Route path="/create-monitoring" element={<CreateMonitoring />} />
