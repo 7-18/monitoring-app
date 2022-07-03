@@ -7,8 +7,11 @@ import { Link } from "react-router-dom";
 import { SpanLogo } from "../styles/GlobalStyles";
 import { FiLogOut } from "react-icons/fi";
 import { CgProfile } from "react-icons/cg";
+import { useDispatch } from "react-redux";
+import { logoutUserAsync } from "../redux/actions/actionUser";
 
 export const NavBars = () => {
+  const dispatch = useDispatch();
   return (
     <Navbar collapseOnSelect expand="lg" bg="light" className="flex-column">
       <Container fluid className="justify-content-center">
@@ -89,7 +92,10 @@ export const NavBars = () => {
                   Kevin Briceño
                 </small>
               </span>
-              <span className="text-lg-center text-muted d-flex flex-column align-items-center">
+              <span
+                className="text-lg-center text-muted d-flex flex-column align-items-center"
+                onClick={() => dispatch(logoutUserAsync())}
+              >
                 <FiLogOut />
                 <small>Logout</small>
               </span>

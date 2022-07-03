@@ -1,10 +1,12 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
 } from "firebase/auth";
+import { google, facebook } from "../../firebase/firebase.config";
 import { typesLogin, typesRegister } from "../types/types";
 
 const registerUserSync = (name, email, password) => {
