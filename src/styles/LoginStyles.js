@@ -23,6 +23,14 @@ export const FormLogin = styled.form`
   & > img {
     margin-bottom: 20px;
   }
+
+  & > small > a {
+    font-weight: bold;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #ffffff;
+    margin-left: 5px;
+  }
 `;
 
 export const InputLogin = styled(Form.Control)`
@@ -46,7 +54,7 @@ export const ButtonLogin = styled.button`
   background: #ffffff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
   border: 1px solid transparent;
-  border-radius: 4px;
+  border-radius: 30px;
   outline: none;
   text-align: center;
   text-transform: uppercase;
@@ -74,21 +82,8 @@ export const SignWithAnother = styled.div`
   justify-content: center;
   font-size: 14px;
 
-  & > div {
-    flex-direction: row;
-    width: 200px;
-
-    & > div {
-      background-color: red;
-      height: 1px;
-      flex-basis: 0;
-    }
-
-    & > span {
-      margin: 0 10px;
-      font-weight: bold;
-      flex-basis: auto;
-    }
+  & > span {
+    font-weight: bold;
   }
 `;
 
@@ -96,15 +91,25 @@ export const SignInWithButton = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 20px;
 
   & > button {
-    background-color: transparent;
+    background-color: #ffffff;
+    padding: 8px 10px;
+    border-radius: 30px;
     outline: none;
     border: none;
     &:hover,
     &:focus,
     &:active {
-      transform: scale(1.1);
+      transform: scale(1.01);
+    }
+
+    & > span {
+      font-weight: bold;
+      color: #2148c0;
+      margin-left: 10px;
+      font-size: 12px;
     }
   }
   & > img {

@@ -12,6 +12,7 @@ import facebook from "../assets/images/facebook.png";
 import { FloatingLabel } from "react-bootstrap";
 import { loginFacebook, loginGoogle } from "../redux/actions/actionUser";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const Login = () => {
   const dispatch = useDispatch();
@@ -19,14 +20,14 @@ export const Login = () => {
     <DivLogin>
       <FormLogin>
         <img src={logo} width={130} height={130} />
-        <FloatingLabel label="CORREO ELECTRÓNICO" className="inputLogin">
+        <FloatingLabel label="Correo electrónico" className="inputLogin">
           <InputLogin
             type="email"
             name="email"
             placeholder="ejemplo@correo.com"
           />
         </FloatingLabel>
-        <FloatingLabel label="CONTRASEÑA" className="inputLogin">
+        <FloatingLabel label="Contraseña" className="inputLogin">
           <InputLogin
             type="password"
             name="password"
@@ -36,16 +37,12 @@ export const Login = () => {
         <ButtonLogin type="submit">Login</ButtonLogin>
         <small>¿Olvidaste tu contraseña?</small>
         <SignWithAnother>
-          <div>
-            <div></div>
-            <span>o</span>
-            <div></div>
-          </div>
-          <span>Inicia sesión con</span>
+          <span>o</span>
         </SignWithAnother>
         <SignInWithButton>
           <button onClick={() => dispatch(loginGoogle())}>
             <img src={google} alt="google" />
+            <span>Continuar con Google</span>
           </button>
           <div className="vertical"></div>
           <button>
@@ -54,8 +51,10 @@ export const Login = () => {
               alt="facebook"
               onClick={() => dispatch(loginFacebook())}
             />
+            <span>Continuar con Facebook</span>
           </button>
         </SignInWithButton>
+        <small>¿No tienes cuenta? <Link to="/register">Regístrate</Link></small>
       </FormLogin>
     </DivLogin>
   );

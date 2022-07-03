@@ -31,12 +31,11 @@ export const NavBars = () => {
                 Kevin Briceño
               </small>
             </span>
-            <Nav className="align-items-center">
-              <NavDropdown
-                title="Monitores"
-                id="collasible-nav-dropdown"
-                className="me-lg-5 me-0"
-              >
+            <Nav className="align-items-center" style={{ marginLeft: "-25px" }}>
+              <Nav.Link as={Link} to="/search" className="d-lg-none d-block">
+                Search
+              </Nav.Link>
+              <NavDropdown title="Monitores" id="collasible-nav-dropdown">
                 <NavDropdown.Item
                   className="text-lg-center text-muted py-lg-2"
                   as={Link}
@@ -53,17 +52,13 @@ export const NavBars = () => {
                 </NavDropdown.Item>
               </NavDropdown>
               <Navbar.Brand
-                className="d-none d-lg-block mx-lg-2"
+                className="d-none d-lg-block mx-lg-5"
                 as={Link}
                 to="/"
               >
                 <img src={logo} alt="logo" width={40} />
               </Navbar.Brand>
-              <NavDropdown
-                title="Monitorías"
-                id="collasible-nav-dropdown"
-                className="ms-lg-5"
-              >
+              <NavDropdown title="Monitorías" id="collasible-nav-dropdown">
                 <NavDropdown.Item
                   className="text-lg-center text-muted py-lg-2"
                   as={Link}
@@ -82,7 +77,7 @@ export const NavBars = () => {
             </Nav>
             <span className="d-none d-lg-flex text-lg-center text-muted d-flex flex-column align-items-center logout">
               <FiLogOut />
-              <small>Logout</small>
+              <small>Salir</small>
             </span>
             <div className="d-flex d-lg-none gap-5 my-3">
               <span className="text-lg-center text-muted d-flex flex-column align-items-center">
@@ -97,12 +92,15 @@ export const NavBars = () => {
                 onClick={() => dispatch(logoutUserAsync())}
               >
                 <FiLogOut />
-                <small>Logout</small>
+                <small>Salir</small>
               </span>
             </div>
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <SpanLogo className="d-none d-lg-block">
+        <Link to="/register">Search</Link>
+      </SpanLogo>
     </Navbar>
   );
 };
