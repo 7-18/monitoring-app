@@ -34,6 +34,13 @@ export const MonitorsList = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [monitor, setMonitor] = useState({});
+
+  const handleEdit = (monitor) => {
+    setMonitor(monitor);
+    handleShow();
+  };
+
   return (
     <CardDiv>
       <Container>
@@ -45,7 +52,7 @@ export const MonitorsList = () => {
                   <CardStyled>
                     <MdModeEditOutline
                       className="edit"
-                      onClick={() => handleShow()}
+                      onClick={() => handleEdit(monitor)}
                     />
                     <FaTrash
                       className="delete"
@@ -91,7 +98,7 @@ export const MonitorsList = () => {
             />
           )}
         </Row>
-        <EditMonitors show={show} handleClose={handleClose} />
+        <EditMonitors show={show} handleClose={handleClose} monitor={monitor} />
       </Container>
     </CardDiv>
   );

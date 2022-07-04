@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { InputStyled } from "./FormsStyles";
 import { CardStyled } from "./GlobalStyles";
 
 export const SubjectsCard = styled(CardStyled)`
@@ -61,5 +62,13 @@ export const SubjectsCard = styled(CardStyled)`
 
   &.Extracurricular {
     border-color: #000000;
+  }
+`;
+
+export const EditInput = styled(InputStyled)`
+  background-color: #ffffff !important;
+  border-color: rgba(240, 240, 240, 0.5) !important;
+  &:focus {
+    background-color: #ffffff;
   }
 `;
