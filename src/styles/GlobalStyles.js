@@ -1,5 +1,6 @@
 import { Card } from "react-bootstrap";
 import styled from "styled-components";
+import { ButtonLogin } from "./LoginStyles";
 
 export const SpanLogo = styled.span`
   text-align: center;
@@ -23,6 +24,43 @@ export const CardStyled = styled(Card)`
   padding: 20px;
   justify-content: center;
   align-items: center;
+  position: relative;
+
+  &:hover {
+    .delete, .edit {
+      opacity: 1;
+    }
+  }
+
+  & > .delete, & > .edit {
+    position: absolute;
+    top: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.5s;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 40px;
+    padding: 0 10px;
+  }
+
+  & > .delete {
+    right: 10px;
+    color: #BB2D3B;
+
+    &:hover {
+      box-shadow: 4px 4px rgba(0, 0, 0, 0.3);
+    }
+  }
+
+  & > .edit {
+    left: 10px;
+    color: #FFCA2C;
+
+    &:hover {
+      box-shadow: -4px 4px rgba(0, 0, 0, 0.3);
+    }
+  }
 
   & > img {
     width: 100px;
@@ -42,5 +80,19 @@ export const CardStyled = styled(Card)`
         margin-right: 5px;
         font-weight: bold;
       }
+  }
+`;
+
+export const ButtonStyled = styled(ButtonLogin)`
+  box-shadow: none;
+  border-color: #2f61ff;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & > svg {
+    margin-left: 20px;
+    font-size: 30px;
   }
 `;

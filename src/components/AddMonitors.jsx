@@ -2,7 +2,6 @@ import { Button } from "react-bootstrap";
 import { useForm } from "../hooks/useForm";
 import { useDispatch } from "react-redux";
 import { addMonitorAsync } from "../redux/actions/actionMonitors";
-import { MonitorsList } from "./MonitorsList";
 import { academic_programs, semesters } from "../data/data";
 
 export const AddMonitors = () => {
@@ -24,7 +23,6 @@ export const AddMonitors = () => {
   };
 
   return (
-    <>
       <div>
         <div>Agregar monitor</div>
         <form onSubmit={handleSubmit} className="form flex-column d-flex gap-2">
@@ -93,7 +91,5 @@ export const AddMonitors = () => {
           </Button>
         </form>
       </div>
-      <MonitorsList />
-    </>
   );
 };

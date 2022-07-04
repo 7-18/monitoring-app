@@ -28,7 +28,7 @@ export const AppRoutes = () => {
   }, []);
 
   if (checking) {
-    return <Spin />;
+    return <Spin heightPx={"100vh"} />;
   }
 
   return (
