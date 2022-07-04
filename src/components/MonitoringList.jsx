@@ -9,17 +9,9 @@ export const Monitoring = () => {
   useEffect(() => {
     dispatch(getMonitoringAsync());
   }, []);
-
   return (
     <div>
-      <div>Monitorías</div>
-      <ol>
-        {subjects.map((subject) => (
-          <li key={subject.subject}>
-            {subject.subject}, {subject.monitor}
-          </li>
-        ))}
-      </ol>
+      <h1>Monitoring</h1>
     </div>
   );
 };

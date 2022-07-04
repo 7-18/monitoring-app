@@ -120,7 +120,11 @@ export const CreateMonitoring = () => {
           </Formik>
         </>
       ) : (
-        <NotFound text={"Para registrar monitorías debe tener monitores disponibles"}/>
+        <div className="w-50">
+          <NotFound
+            text={"Para registrar monitorías debe tener monitores disponibles"}
+          />
+        </div>
       )}
     </DivForms>
   );

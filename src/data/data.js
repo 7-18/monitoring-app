@@ -109,6 +109,10 @@ export const academic_programs = [
     id: 11,
     name: "Odontología",
   },
+  {
+    id: 12,
+    name: "Psicología",
+  },
 ];
 
 export const class_subjects = [
@@ -166,6 +170,10 @@ export const class_subjects = [
   },
   {
     id: 14,
+    name: "Inglés",
+  },
+  {
+    id: 15,
     name: "Extracurricular",
   },
 ];

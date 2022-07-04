@@ -8,7 +8,7 @@ export const NotFound = ({ text }) => {
   const navigate = useNavigate();
   return (
     <Container className="d-flex flex-column justify-content-center align-items-center">
-      <h2 className="text-center h1">{text}</h2>
+      <h2 className="text-center display-6">{text}</h2>
       <ButtonStyled onClick={() => navigate("/add-monitors")}>
         Agregar monitores <AiFillPlusCircle />
       </ButtonStyled>
