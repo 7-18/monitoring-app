@@ -13,7 +13,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { ButtonStyled } from "../styles/GlobalStyles";
 
-const MonitorsSchema = Yup.object().shape({
+const MonitorSchema = Yup.object().shape({
   name: Yup.string()
     .min(3, "Nombre muy corto")
     .max(20, "Nombre muy largo")
@@ -47,9 +47,9 @@ export const AddMonitors = () => {
     <DivForms>
       <Formik
         initialValues={formValues}
-        validationSchema={monitorsSchema}
+        validationSchema={MonitorSchema}
         onSubmit={(values) => {
-          dispatch(addMonitorAsync(formValues));
+          dispatch(addMonitorAsync(values));
           reset();
         }}
       >
