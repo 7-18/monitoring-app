@@ -6,12 +6,10 @@ import {
   deleteMonitorAsync,
   getMonitorsAsync,
 } from "../redux/actions/actionMonitors";
-import { ButtonStyled, CardDiv, CardStyled } from "../styles/GlobalStyles";
+import { CardDiv, CardStyled } from "../styles/GlobalStyles";
 import { FaTrash } from "react-icons/fa";
 import { MdModeEditOutline } from "react-icons/md";
-import { AiFillPlusCircle } from "react-icons/ai";
-import { useNavigate } from "react-router-dom";
-import { Spin } from "./Spin";
+import { NotFound } from "./NotFound";
 
 const randomAvatar = () => {
   const random = Math.floor(Math.random() * avatars.length);
@@ -19,7 +17,6 @@ const randomAvatar = () => {
 };
 
 export const MonitorsList = () => {
-  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { monitors } = useSelector((state) => state.monitors);
 
@@ -78,13 +75,7 @@ export const MonitorsList = () => {
               ))}
             </>
           ) : (
-            <Container className="d-flex flex-column justify-content-center align-items-center">
-              <h2 className="text-center h1">No hay monitores registrados</h2>
-              <ButtonStyled onClick={() => navigate("/add-monitors")}>
-                Agregar monitores <AiFillPlusCircle />
-              </ButtonStyled>
-              <Spin heightPx={"20vh"} />
-            </Container>
+            <NotFound text={"No hay monitores registrados"} />
           )}
         </Row>
       </Container>

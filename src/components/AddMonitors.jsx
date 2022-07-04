@@ -1,5 +1,4 @@
 import { FloatingLabel } from "react-bootstrap";
-import { useForm } from "../hooks/useForm";
 import { useDispatch } from "react-redux";
 import { addMonitorAsync } from "../redux/actions/actionMonitors";
 import { academic_programs, semesters } from "../data/data";
@@ -12,6 +11,7 @@ import {
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { ButtonStyled } from "../styles/GlobalStyles";
+import { useNavigate } from "react-router-dom";
 
 const MonitorSchema = Yup.object().shape({
   name: Yup.string()
@@ -33,27 +33,27 @@ const MonitorSchema = Yup.object().shape({
 
 export const AddMonitors = () => {
   const dispatch = useDispatch();
-  const [formValues, handleInputChange, reset] = useForm({
-    name: "",
-    lastName: "",
-    academic_program: "",
-    semester: "",
-    id: "",
-    email: "",
-    phone: "",
-  });
+  const navigate = useNavigate();
 
   return (
     <DivForms>
       <Formik
-        initialValues={formValues}
+        initialValues={{
+          name: "",
+          lastName: "",
+          academic_program: "",
+          semester: "",
+          id: "",
+          email: "",
+          phone: "",
+        }}
         validationSchema={MonitorSchema}
         onSubmit={(values) => {
           dispatch(addMonitorAsync(values));
-          reset();
+          navigate("/list-monitors");
         }}
       >
-        {({ errors, touched, handleSubmit }) => (
+        {({ values, errors, touched, handleChange, handleSubmit }) => (
           <FormStyled className="form flex-column d-flex gap-2">
             <h2 className="display-6 fs-2">Agregar monitor</h2>
             <FloatingLabel label="Nombre" className="inputLogin">
@@ -61,8 +61,8 @@ export const AddMonitors = () => {
                 type="text"
                 name="name"
                 placeholder="Ingresa tu nombre"
-                onChange={handleInputChange}
-                value={formValues.name}
+                onChange={handleChange}
+                value={values.name}
               />
               {errors.name && touched.name ? (
                 <div className="error">{errors.name}</div>
@@ -73,8 +73,8 @@ export const AddMonitors = () => {
                 type="text"
                 name="lastName"
                 placeholder="Ingresa tu apellido"
-                onChange={handleInputChange}
-                value={formValues.lastName}
+                onChange={handleChange}
+                value={values.lastName}
               />
               {errors.lastName && touched.lastName ? (
                 <div className="error">{errors.lastName}</div>
@@ -83,9 +83,9 @@ export const AddMonitors = () => {
             <FloatingLabel label="Programa académico" className="inputLogin">
               <SelectStyled
                 name="academic_program"
-                onChange={handleInputChange}
+                onChange={handleChange}
               >
-                <option value="">
+                <option value="" selected disabled hidden>
                   Programa académico
                 </option>
                 {academic_programs.map((academic_program) => (
@@ -102,8 +102,8 @@ export const AddMonitors = () => {
               ) : null}
             </FloatingLabel>
             <FloatingLabel label="Semestre" className="inputLogin">
-              <SelectStyled name="semester" onChange={handleInputChange}>
-                <option value="">
+              <SelectStyled name="semester" onChange={handleChange}>
+                <option value="" selected disabled hidden>
                   Semestre
                 </option>
                 {semesters.map((semester) => (
@@ -121,8 +121,8 @@ export const AddMonitors = () => {
                 type="number"
                 name="id"
                 placeholder="Ingresa tu cédula"
-                onChange={handleInputChange}
-                value={formValues.id}
+                onChange={handleChange}
+                value={values.id}
               />
               {errors.id && touched.id ? (
                 <div className="error">{errors.id}</div>
@@ -133,8 +133,8 @@ export const AddMonitors = () => {
                 type="email"
                 name="email"
                 placeholder="Ingresa tu correo electrónico"
-                onChange={handleInputChange}
-                value={formValues.email}
+                onChange={handleChange}
+                value={values.email}
               />
               {errors.email && touched.email ? (
                 <div className="error">{errors.email}</div>
@@ -145,8 +145,8 @@ export const AddMonitors = () => {
                 type="tel"
                 name="phone"
                 placeholder="Ingresa tu teléfono"
-                onChange={handleInputChange}
-                value={formValues.phone}
+                onChange={handleChange}
+                value={values.phone}
               />
               {errors.phone && touched.phone ? (
                 <div className="error">{errors.phone}</div>

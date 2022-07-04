@@ -17,7 +17,6 @@ import {
 } from "../redux/actions/actionUser";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useForm } from "../hooks/useForm";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -35,25 +34,23 @@ const SignUpSchema = Yup.object().shape({
 
 export const SignUp = () => {
   const dispatch = useDispatch();
-  const [formValues, handleInputChange, reset] = useForm({
-    name: "",
-    email: "",
-    password: "",
-  });
 
   return (
     <DivLogin>
       <Formik
-        initialValues={formValues}
+        initialValues={{
+          name: "",
+          email: "",
+          password: "",
+        }}
         validationSchema={SignUpSchema}
         onSubmit={(values) => {
           dispatch(
             registerUserAsync(values.name, values.email, values.password)
           );
-          reset();
         }}
       >
-        {({ errors, touched, handleSubmit }) => (
+        {({ values, errors, touched, handleSubmit, handleChange }) => (
           <FormLogin>
             <img src={logo} width={130} height={130} />
             <FloatingLabel label="Nombre y apellido" className="inputLogin">
@@ -61,8 +58,8 @@ export const SignUp = () => {
                 type="text"
                 name="name"
                 placeholder="Ingresa tu nombre"
-                onChange={handleInputChange}
-                value={formValues.name}
+                onChange={handleChange}
+                value={values.name}
               />
               {errors.name && touched.name ? (
                 <div className="error">{errors.name}</div>
@@ -73,8 +70,8 @@ export const SignUp = () => {
                 type="email"
                 name="email"
                 placeholder="ejemplo@correo.com"
-                onChange={handleInputChange}
-                value={formValues.email}
+                onChange={handleChange}
+                value={values.email}
               />
               {errors.email && touched.email ? (
                 <div className="error">{errors.email}</div>
@@ -85,8 +82,8 @@ export const SignUp = () => {
                 type="password"
                 name="password"
                 placeholder="contraseña"
-                onChange={handleInputChange}
-                value={formValues.password}
+                onChange={handleChange}
+                value={values.password}
               />
               {errors.password && touched.password ? (
                 <div className="error">{errors.password}</div>

@@ -17,7 +17,6 @@ import {
 } from "../redux/actions/actionUser";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { useForm } from "../hooks/useForm";
 import { Formik } from "formik";
 import * as Yup from "yup";
 
@@ -31,22 +30,20 @@ const LoginSchema = Yup.object().shape({
 
 export const Login = () => {
   const dispatch = useDispatch();
-  const [formValues, handleInputChange, reset] = useForm({
-    email: "",
-    password: "",
-  });
 
   return (
     <DivLogin>
       <Formik
-        initialValues={formValues}
+        initialValues={{
+          email: "",
+          password: "",
+        }}
         validationSchema={LoginSchema}
         onSubmit={(values) => {
           dispatch(loginUserAsync(values.email, values.password));
-          reset();
         }}
       >
-        {({ errors, touched, handleSubmit }) => (
+        {({ values, errors, touched, handleChange, handleSubmit }) => (
           <FormLogin onSubmit={handleSubmit}>
             <img src={logo} width={130} height={130} />
             <FloatingLabel label="Correo electrónico" className="inputLogin">
@@ -54,8 +51,8 @@ export const Login = () => {
                 type="email"
                 name="email"
                 placeholder="ejemplo@correo.com"
-                onChange={handleInputChange}
-                value={formValues.email}
+                onChange={handleChange}
+                value={values.email}
               />
               {errors.email && touched.email ? (
                 <div className="error">{errors.email}</div>
@@ -66,8 +63,8 @@ export const Login = () => {
                 type="password"
                 name="password"
                 placeholder="contraseña"
-                onChange={handleInputChange}
-                value={formValues.password}
+                onChange={handleChange}
+                value={values.password}
               />
               {errors.password && touched.password ? (
                 <div className="error">{errors.password}</div>
