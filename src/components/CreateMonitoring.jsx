@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { FloatingLabel } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { classrooms, class_subjects } from "../data/data";
-import { useForm } from "../hooks/useForm";
 import { addMonitoringAsync } from "../redux/actions/actionMonitoring";
 import { getMonitorsAsync } from "../redux/actions/actionMonitors";
 import {
@@ -15,6 +14,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import { ButtonStyled } from "../styles/GlobalStyles";
 import { NotFound } from "./NotFound";
+import { useNavigate } from "react-router-dom";
 
 const MonitoringSchema = Yup.object().shape({
   subject: Yup.string().required("Materia requerida"),
@@ -24,9 +24,9 @@ const MonitoringSchema = Yup.object().shape({
 });
 
 export const CreateMonitoring = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { monitors } = useSelector((state) => state.monitors);
-  const [reset] = useForm();
 
   useEffect(() => {
     dispatch(getMonitorsAsync());
@@ -46,7 +46,7 @@ export const CreateMonitoring = () => {
             validationSchema={MonitoringSchema}
             onSubmit={(values) => {
               dispatch(addMonitoringAsync(values));
-              reset();
+              navigate("/list-monitoring");
             }}
           >
             {({ values, errors, touched, handleChange, handleSubmit }) => (
@@ -123,6 +123,8 @@ export const CreateMonitoring = () => {
         <div className="w-50">
           <NotFound
             text={"Para registrar monitorías debe tener monitores disponibles"}
+            navigation={"/add-monitors"}
+            add={"Agregar monitores"}
           />
         </div>
       )}

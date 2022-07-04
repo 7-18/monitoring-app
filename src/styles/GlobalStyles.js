@@ -225,11 +225,11 @@ export const FilterButton = styled(ButtonStyled)`
   }
 
   &.Inglés {
-    color: #2471A3;
-    border-color: #2471A3;
+    color: #2471a3;
+    border-color: #2471a3;
 
     &:hover {
-      background-color: #2471A3;
+      background-color: #2471a3;
     }
   }
 
@@ -239,6 +239,35 @@ export const FilterButton = styled(ButtonStyled)`
 
     &:hover {
       background-color: #000000;
+    }
+  }
+`;
+
+export const ModalButton = styled.button`
+  border: 1px solid transparent;
+  padding: 5px 15px;
+  transition: 0.3s;
+  background-color: transparent;
+  outline: none;
+  border-radius: 5px;
+  &:hover {
+    color: #ffffff !important;
+  }
+  &.edit {
+    color: #ffca2c;
+    border-color: #ffca2c;
+
+    &:hover {
+      background-color: #ffca2c;
+    }
+  }
+
+  &.cancel {
+    color: #bb2d3b;
+    border-color: #bb2d3b;
+
+    &:hover {
+      background-color: #bb2d3b;
     }
   }
 `;

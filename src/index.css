@@ -33,3 +33,8 @@ a:focus {
   width: 100%;
   margin: 10px;
 }
+
+h2,
+h3 {
+  user-select: none;
+}

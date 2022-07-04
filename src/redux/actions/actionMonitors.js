@@ -115,15 +115,15 @@ const deleteMonitorSync = (monitor) => {
   };
 };
 
-export const deleteMonitorAsync = (monitor) => {
+export const deleteMonitorAsync = (id) => {
   return async (dispatch) => {
     const collectionMonitors = collection(db, "monitors");
-    const q = query(collectionMonitors, where("email", "==", monitor));
+    const q = query(collectionMonitors, where("id", "==", id));
     const data = await getDocs(q);
     data.forEach((monitor) => {
       deleteDoc(doc(db, "monitors", monitor.id));
     });
-    dispatch(deleteMonitorSync(monitor));
+    dispatch(deleteMonitorSync(id));
     dispatch(getMonitorsAsync());
   };
 };

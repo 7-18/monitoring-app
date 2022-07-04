@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { class_subjects } from "../data/data";
 import { getMonitoringAsync } from "../redux/actions/actionMonitoring";
 import { FilterButton } from "../styles/GlobalStyles";
+import { Filters } from "./Filters";
 
 export const AllSubjects = () => {
   const dispatch = useDispatch();
@@ -12,6 +13,18 @@ export const AllSubjects = () => {
   useEffect(() => {
     dispatch(getMonitoringAsync());
   }, []);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [subjectId, setSubjectId] = useState("");
+
+  const getSubjectName = ({ target }) => {
+    handleShow();
+    setSubjectId(target.id);
+  };
 
   return (
     <Container className="my-lg-5">
@@ -23,10 +36,22 @@ export const AllSubjects = () => {
       <Row xs={1} lg={5} sm={2} className="g-3">
         {class_subjects.map((subject) => (
           <Col key={subject.id}>
-            <FilterButton className={subject.name}>{subject.name}</FilterButton>
+            <FilterButton
+              className={subject.name}
+              onClick={getSubjectName}
+              id={subject.name}
+            >
+              {subject.name}
+            </FilterButton>
           </Col>
         ))}
       </Row>
+      <Filters
+        show={show}
+        handleClose={handleClose}
+        id={subjectId}
+        subjects={subjects}
+      />
     </Container>
   );
 };

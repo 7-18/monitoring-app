@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { avatars } from "../data/avatar";
@@ -10,6 +10,7 @@ import { CardDiv, CardStyled } from "../styles/GlobalStyles";
 import { FaTrash } from "react-icons/fa";
 import { MdModeEditOutline } from "react-icons/md";
 import { NotFound } from "./NotFound";
+import { EditMonitors } from "./EditMonitors";
 
 const randomAvatar = () => {
   const random = Math.floor(Math.random() * avatars.length);
@@ -24,9 +25,14 @@ export const MonitorsList = () => {
     dispatch(getMonitorsAsync());
   }, []);
 
-  const handleDelete = (email) => {
-    dispatch(deleteMonitorAsync(email));
+  const handleDelete = (id) => {
+    dispatch(deleteMonitorAsync(id));
   };
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
     <CardDiv>
@@ -37,10 +43,13 @@ export const MonitorsList = () => {
               {monitors.map((monitor) => (
                 <Col key={monitor.id}>
                   <CardStyled>
-                    <MdModeEditOutline className="edit" />
+                    <MdModeEditOutline
+                      className="edit"
+                      onClick={() => handleShow()}
+                    />
                     <FaTrash
                       className="delete"
-                      onClick={() => handleDelete(monitor.email)}
+                      onClick={() => handleDelete(monitor.id)}
                     />
                     <img src={randomAvatar()} />
                     <Card.Body>
@@ -75,9 +84,14 @@ export const MonitorsList = () => {
               ))}
             </>
           ) : (
-            <NotFound text={"No hay monitores registrados"} />
+            <NotFound
+              text={"No hay monitores registrados"}
+              navigation={"/add-monitors"}
+              add={"Agregar monitores"}
+            />
           )}
         </Row>
+        <EditMonitors show={show} handleClose={handleClose} />
       </Container>
     </CardDiv>
   );

@@ -30,8 +30,8 @@ export const NavBars = () => {
         <SpanLogo>Universidad de la Vida</SpanLogo>
       </Container>
       <Container fluid>
-        <Navbar.Brand className="d-lg-none">
-          <img src={logo} alt="logo" width={40} as={Link} to="/" />
+        <Navbar.Brand className="d-lg-none" as={Link} to="/">
+          <img src={logo} alt="logo" width={40} />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -42,7 +42,6 @@ export const NavBars = () => {
               ) : (
                 <img
                   src={profile?.photoURL}
-                  alt="profile"
                   width={20}
                   className="rounded-circle"
                 />
@@ -110,7 +109,6 @@ export const NavBars = () => {
                 ) : (
                   <img
                     src={profile?.photoURL}
-                    alt="profile"
                     width={20}
                     className="rounded-circle"
                   />
@@ -132,7 +130,7 @@ export const NavBars = () => {
         </Navbar.Collapse>
       </Container>
       <SpanLogo className="d-none d-lg-block">
-        <Link to="/register">Search</Link>
+        <Link to="/search">Search</Link>
       </SpanLogo>
     </Navbar>
   );
