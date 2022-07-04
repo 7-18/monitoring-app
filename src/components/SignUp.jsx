@@ -18,8 +18,8 @@ import {
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useForm } from "../hooks/useForm";
-import * as Yup from "yup";
 import { Formik } from "formik";
+import * as Yup from "yup";
 
 const SignUpSchema = Yup.object().shape({
   name: Yup.string()
