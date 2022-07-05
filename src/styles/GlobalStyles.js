@@ -262,6 +262,15 @@ export const ModalButton = styled.button`
     }
   }
 
+  &.update {
+    color: green;
+    border-color: green;
+
+    &:hover {
+      background-color: green;
+    }
+  }
+
   &.cancel {
     color: #bb2d3b;
     border-color: #bb2d3b;

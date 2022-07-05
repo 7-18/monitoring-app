@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { InputStyled } from "./FormsStyles";
+import { InputStyled, SelectStyled } from "./FormsStyles";
 import { CardStyled } from "./GlobalStyles";
 
 export const SubjectsCard = styled(CardStyled)`
@@ -67,8 +67,22 @@ export const SubjectsCard = styled(CardStyled)`
 
 export const EditInput = styled(InputStyled)`
   background-color: #ffffff !important;
-  border-color: rgba(240, 240, 240, 0.5) !important;
+  border-color: rgba(0, 0, 0) !important;
   &:focus {
     background-color: #ffffff;
+  }
+  &:disabled {
+    border-color: rgba(200, 200, 200) !important;
+  }
+`;
+
+export const EditSelect = styled(SelectStyled)`
+  background-color: #ffffff !important;
+  border-color: rgba(0, 0, 0) !important;
+  &:focus {
+    background-color: #ffffff;
+  }
+  &:disabled {
+    border-color: rgba(200, 200, 200) !important;
   }
 `;
