@@ -1,11 +1,15 @@
+import React from "react";
 import { Button, Card, Col, Modal, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { FilterButton } from "../styles/GlobalStyles";
 import { SubjectsCard } from "../styles/ListStyles";
 import { NotFound } from "./NotFound";
 
-export const Filters = ({ show, handleClose, subjects, id }) => {
+export const Filters = ({ show, handleClose, subjects, id, monitors }) => {
   const subjectFiltered = subjects.filter((subject) => subject.subject === id);
+  const monitorFind = subjectFiltered.map((subject) =>
+    monitors.find((monitor) => subject.monitor.includes(monitor.name))
+  );
   const navigate = useNavigate();
   return (
     <>
@@ -21,7 +25,7 @@ export const Filters = ({ show, handleClose, subjects, id }) => {
         <Modal.Body>
           {subjectFiltered.length > 0 ? (
             <>
-              <Row xs={1} md={2} sm={2} className="g-4">
+              <Row xs={1} className="g-4">
                 {subjectFiltered.map((monitorias) => (
                   <Col key={monitorias.id}>
                     <SubjectsCard className={monitorias.subject}>
@@ -30,18 +34,34 @@ export const Filters = ({ show, handleClose, subjects, id }) => {
                           {monitorias.subject}
                         </Card.Title>
                         <ul>
-                          <li>
+                          <li className="fs-6">
                             <span>Monitor:</span>
                             {monitorias.monitor}
                           </li>
-                          <li>
-                            <span>Fecha:</span>
-                            {monitorias.date}
-                          </li>
-                          <li>
-                            <span>Salón:</span>
-                            {monitorias.classroom}
-                          </li>
+                          {monitorFind.map((monitor) => (
+                            <React.Fragment key={monitor.id}>
+                              <li className="ms-3">
+                                <span>Email:</span>
+                                {monitor.email}
+                              </li>
+                              <li className="ms-3">
+                                <span>Teléfono:</span>
+                                {monitor.phone}
+                              </li>
+                              <li className="ms-3">
+                                <span>Cédula:</span>
+                                {monitor.dni}
+                              </li>
+                              <li className="ms-3">
+                                <span>Programa académico</span>
+                                {monitor.program}
+                              </li>
+                              <li className="ms-3">
+                                <span>Semestre:</span>
+                                {monitor.semester}
+                              </li>
+                            </React.Fragment>
+                          ))}
                         </ul>
                       </Card.Body>
                     </SubjectsCard>

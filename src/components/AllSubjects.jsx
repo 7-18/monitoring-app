@@ -3,15 +3,21 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { class_subjects } from "../data/data";
 import { getMonitoringAsync } from "../redux/actions/actionMonitoring";
+import { getMonitorsAsync } from "../redux/actions/actionMonitors";
 import { FilterButton } from "../styles/GlobalStyles";
 import { Filters } from "./Filters";
 
 export const AllSubjects = () => {
   const dispatch = useDispatch();
   const { subjects } = useSelector((state) => state.subjects);
+  const { monitors } = useSelector((state) => state.monitors);
 
   useEffect(() => {
     dispatch(getMonitoringAsync());
+  }, []);
+
+  useEffect(() => {
+    dispatch(getMonitorsAsync());
   }, []);
 
   const [show, setShow] = useState(false);
@@ -51,6 +57,7 @@ export const AllSubjects = () => {
         handleClose={handleClose}
         id={subjectId}
         subjects={subjects}
+        monitors={monitors}
       />
     </Container>
   );
