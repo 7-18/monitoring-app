@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMonitoringAsync,
@@ -10,6 +10,7 @@ import { FaTrash } from "react-icons/fa";
 import { CardDiv } from "../styles/GlobalStyles";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { NotFound } from "./NotFound";
+import { EditMonitoring } from "./EditMonitoring";
 
 export const Monitoring = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,18 @@ export const Monitoring = () => {
     dispatch(deleteMonitoringAsync(id));
   };
 
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [monitoring, setMonitoring] = useState({});
+
+  const handleEdit = (monitorias) => {
+    setMonitoring(monitorias);
+    handleShow();
+  };
+
   return (
     <CardDiv>
       <Container>
@@ -32,7 +45,10 @@ export const Monitoring = () => {
               {subjects.map((monitorias) => (
                 <Col key={monitorias.id}>
                   <SubjectsCard className={monitorias.subject}>
-                    <MdModeEditOutline className="edit" />
+                    <MdModeEditOutline
+                      className="edit"
+                      onClick={() => handleEdit(monitorias)}
+                    />
                     <FaTrash
                       className="delete"
                       onClick={() => handleDelete(monitorias.id)}
@@ -68,6 +84,11 @@ export const Monitoring = () => {
             />
           )}
         </Row>
+        <EditMonitoring
+          show={show}
+          handleClose={handleClose}
+          monitorias={monitoring}
+        />
       </Container>
     </CardDiv>
   );

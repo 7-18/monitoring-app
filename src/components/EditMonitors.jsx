@@ -20,7 +20,7 @@ const EditMonitorSchema = Yup.object().shape({
     .required("Apellido requerido"),
   academic_program: Yup.string().required("Programa académico requerido"),
   semester: Yup.string().required("Semestre requerido"),
-  id: Yup.string().min(5, "Cédula inválida").required("Cédula requerida"),
+  dni: Yup.string().min(5, "Cédula inválida").required("Cédula requerida"),
   email: Yup.string().email("Correo inválido").required("Correo requerido"),
   phone: Yup.string()
     .min(9, "Teléfono inválido")
@@ -35,6 +35,7 @@ export const EditMonitors = ({ show, handleClose, monitor }) => {
     setDisabled(true);
     handleClose();
   };
+  
   return (
     <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
       <Modal.Header closeButton>
@@ -42,11 +43,12 @@ export const EditMonitors = ({ show, handleClose, monitor }) => {
       </Modal.Header>
       <Formik
         initialValues={{
+          id: monitor.id,
           name: monitor.name,
           lastName: monitor.lastName,
           academic_program: monitor.academic_program,
           semester: monitor.semester,
-          id: monitor.id,
+          dni: monitor.dni,
           email: monitor.email,
           phone: monitor.phone,
         }}
@@ -69,7 +71,6 @@ export const EditMonitors = ({ show, handleClose, monitor }) => {
                   <EditInput
                     type="text"
                     name="name"
-                    placeholder="Ingresa tu nombre"
                     onChange={handleChange}
                     value={values.name}
                     disabled={disabled}
@@ -82,7 +83,6 @@ export const EditMonitors = ({ show, handleClose, monitor }) => {
                   <EditInput
                     type="text"
                     name="lastName"
-                    placeholder="Ingresa tu apellido"
                     onChange={handleChange}
                     value={values.lastName}
                     disabled={disabled}
@@ -134,14 +134,13 @@ export const EditMonitors = ({ show, handleClose, monitor }) => {
                 <FloatingLabel label="Cédula" className="inputLogin">
                   <EditInput
                     type="text"
-                    name="id"
-                    placeholder="Ingresa tu cédula"
+                    name="dni"
                     onChange={handleChange}
-                    value={values.id}
+                    value={values.dni}
                     disabled={disabled}
                   />
-                  {errors.id && touched.id ? (
-                    <div className="error">{errors.id}</div>
+                  {errors.dni && touched.dni ? (
+                    <div className="error">{errors.dni}</div>
                   ) : null}
                 </FloatingLabel>
                 <FloatingLabel
@@ -151,9 +150,8 @@ export const EditMonitors = ({ show, handleClose, monitor }) => {
                   <EditInput
                     type="text"
                     name="email"
-                    placeholder="Ingresa tu correo electrónico"
-                    onChange={handleChange}
                     value={values.email}
+                    onChange={handleChange}
                     disabled={disabled}
                   />
                   {errors.email && touched.email ? (

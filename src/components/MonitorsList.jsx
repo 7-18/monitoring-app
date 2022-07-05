@@ -25,8 +25,8 @@ export const MonitorsList = () => {
     dispatch(getMonitorsAsync());
   }, []);
 
-  const handleDelete = (id) => {
-    dispatch(deleteMonitorAsync(id));
+  const handleDelete = (dni) => {
+    dispatch(deleteMonitorAsync(dni));
   };
 
   const [show, setShow] = useState(false);
@@ -82,7 +82,7 @@ export const MonitorsList = () => {
                         </li>
                         <li>
                           <span>Cédula:</span>
-                          {monitor.id}
+                          {monitor.dni}
                         </li>
                       </ul>
                     </Card.Body>

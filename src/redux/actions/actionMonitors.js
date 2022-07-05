@@ -47,6 +47,7 @@ export const getMonitorsAsync = () => {
     const monitors = [];
     orderMonitors.forEach((monitor) => {
       monitors.push({
+        id: monitor.id,
         ...monitor.data(),
       });
     });
@@ -90,20 +91,16 @@ export const editMonitorSync = (monitor) => {
 export const editMonitorAsync = (monitor) => {
   return async (dispatch) => {
     const collectionMonitors = collection(db, "monitors");
-    const q = query(collectionMonitors, where("email", "==", monitor.email));
+    const q = query(collectionMonitors);
     const data = await getDocs(q);
     let id = "";
-    data.forEach(async (monitor) => {
-      id = monitor.id;
+    data.forEach(async (mon) => {
+      if (mon.id === monitor.id) {
+        id = mon.id;
+        updateDoc(doc(db, "monitors", id), monitor);
+      }
     });
-    const docRef = doc(db, "monitors", id);
-    await updateDoc(docRef, monitor)
-      .then(() => {
-        dispatch(editMonitorSync(monitor));
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    dispatch(editMonitorSync(monitor));
     dispatch(getMonitorsAsync());
   };
 };

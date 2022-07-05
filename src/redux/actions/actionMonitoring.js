@@ -6,6 +6,7 @@ import {
   getDocs,
   orderBy,
   query,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase.config";
@@ -72,6 +73,30 @@ export const deleteMonitoringAsync = (id) => {
       }
     });
     dispatch(deleteMonitoringSync(id));
+    dispatch(getMonitoringAsync());
+  };
+};
+
+const editMonitoringSync = (monitoring) => {
+  return {
+    type: typesMonitoring.UPDATE_MONITORING,
+    payload: monitoring,
+  };
+};
+
+export const editMonitoringAsync = (monitoring) => {
+  return async (dispatch) => {
+    const collectionMonitoring = collection(db, "monitoring");
+    const q = query(collectionMonitoring);
+    const data = await getDocs(q);
+    let id = "";
+    data.forEach(async (mon) => {
+      if (mon.id === monitoring.id) {
+        id = mon.id;
+        updateDoc(doc(db, "monitoring", id), monitoring);
+      }
+    });
+    dispatch(editMonitoringSync(monitoring));
     dispatch(getMonitoringAsync());
   };
 };

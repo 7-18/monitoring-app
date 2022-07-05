@@ -24,7 +24,7 @@ const MonitorSchema = Yup.object().shape({
     .required("Apellido requerido"),
   academic_program: Yup.string().required("Programa académico requerido"),
   semester: Yup.string().required("Semestre requerido"),
-  id: Yup.string().min(5, "Cédula inválida").required("Cédula requerida"),
+  dni: Yup.string().min(5, "Cédula inválida").required("Cédula requerida"),
   email: Yup.string().email("Correo inválido").required("Correo requerido"),
   phone: Yup.string()
     .min(9, "Teléfono inválido")
@@ -43,7 +43,7 @@ export const AddMonitors = () => {
           lastName: "",
           academic_program: "",
           semester: "",
-          id: "",
+          dni: "",
           email: "",
           phone: "",
         }}
@@ -119,13 +119,13 @@ export const AddMonitors = () => {
             <FloatingLabel label="Cédula" className="inputLogin">
               <InputStyled
                 type="number"
-                name="id"
+                name="dni"
                 placeholder="Ingresa tu cédula"
                 onChange={handleChange}
-                value={values.id}
+                value={values.dni}
               />
-              {errors.id && touched.id ? (
-                <div className="error">{errors.id}</div>
+              {errors.dni && touched.dni ? (
+                <div className="error">{errors.dni}</div>
               ) : null}
             </FloatingLabel>
             <FloatingLabel label="Correo electrónico" className="inputLogin">
