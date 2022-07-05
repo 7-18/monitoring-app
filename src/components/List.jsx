@@ -1,23 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { avatars } from "../data/avatar";
-import {
-  deleteMonitorAsync,
-  getMonitorsAsync,
-} from "../redux/actions/actionMonitors";
+import { getMonitorsAsync } from "../redux/actions/actionMonitors";
 import { CardDiv, CardStyled } from "../styles/GlobalStyles";
-import { FaTrash } from "react-icons/fa";
-import { MdModeEditOutline } from "react-icons/md";
 import { NotFound } from "./NotFound";
-import { EditMonitors } from "./EditMonitors";
 
 const randomAvatar = () => {
   const random = Math.floor(Math.random() * avatars.length);
   return avatars[random];
 };
 
-export const MonitorsList = () => {
+export const List = ({ search }) => {
   const dispatch = useDispatch();
   const { monitors } = useSelector((state) => state.monitors);
 
@@ -25,39 +19,19 @@ export const MonitorsList = () => {
     dispatch(getMonitorsAsync());
   }, []);
 
-  const handleDelete = (dni) => {
-    dispatch(deleteMonitorAsync(dni));
-  };
-
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const [monitor, setMonitor] = useState({});
-
-  const handleEdit = (monitor) => {
-    setMonitor(monitor);
-    handleShow();
-  };
+  const filteredMonitors = monitors.filter((monitor) => {
+    return monitor.name.toLowerCase().includes(search.toLowerCase());
+  });
 
   return (
     <CardDiv>
       <Container>
-        <Row xs={4} md={3} sm={2} className="g-4">
-          {monitors.length > 0 ? (
+        <Row xs="auto" className="g-4">
+          {filteredMonitors.length > 0 ? (
             <>
-              {monitors.map((monitor) => (
+              {filteredMonitors.map((monitor) => (
                 <Col key={monitor.id}>
                   <CardStyled>
-                    <MdModeEditOutline
-                      className="edit"
-                      onClick={() => handleEdit(monitor)}
-                    />
-                    <FaTrash
-                      className="delete"
-                      onClick={() => handleDelete(monitor.dni)}
-                    />
                     <img src={randomAvatar()} />
                     <Card.Body>
                       <Card.Title className="text-center border-2 border-bottom">
@@ -92,13 +66,14 @@ export const MonitorsList = () => {
             </>
           ) : (
             <NotFound
-              text={"No hay monitores registrados"}
-              navigation={"/add-monitors"}
-              add={"Agregar monitores"}
+              text={
+                "No hay monitores registrados con este nombre. Revisa la lista de monitores"
+              }
+              navigation={"/list-monitors"}
+              add={"Lista de monitores"}
             />
           )}
         </Row>
-        <EditMonitors show={show} handleClose={handleClose} monitor={monitor} />
       </Container>
     </CardDiv>
   );

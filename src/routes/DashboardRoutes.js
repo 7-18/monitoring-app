@@ -5,6 +5,7 @@ import { CreateMonitoring } from "../components/CreateMonitoring";
 import { Monitoring } from "../components/MonitoringList";
 import { MonitorsList } from "../components/MonitorsList";
 import { NavBars } from "../components/NavBars";
+import { Search } from "../components/Search";
 
 export const DashboardRoutes = () => {
   return (
@@ -12,6 +13,7 @@ export const DashboardRoutes = () => {
       <NavBars />
       <Routes>
         <Route path="/" element={<AllSubjects />} />
+        <Route path="/search" element={<Search />} />
         <Route path="/add-monitors" element={<AddMonitors />} />
         <Route path="/list-monitors" element={<MonitorsList />} />
         <Route path="/create-monitoring" element={<CreateMonitoring />} />

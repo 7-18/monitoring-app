@@ -107,6 +107,11 @@ export const FilterButton = styled(ButtonStyled)`
     transform: scale(1.1);
   }
 
+  &.search {
+    width: 100px;
+    margin: 0;
+  }
+
   &.Matemáticas {
     color: #7d6608;
     border-color: #7d6608;

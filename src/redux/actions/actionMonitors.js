@@ -55,31 +55,32 @@ export const getMonitorsAsync = () => {
   };
 };
 
-// const searchMonitorSync = (monitor) => {
-//   return {
-//     type: typesMonitors.SEARCH_MONITORS,
-//     payload: monitor,
-//   };
-// };
+const searchMonitorSync = (monitor) => {
+  return {
+    type: typesMonitors.SEARCH_MONITORS,
+    payload: monitor,
+  };
+};
 
-// export const searchMonitorAsync = (monitor) => {
-//   return async (dispatch) => {
-//     const collectionMonitors = collection(db, "monitors");
-//     const q = query(
-//       collectionMonitors,
-//       where("name", ">=", monitor),
-//       where("name", "<=", monitor + "~")
-//     );
-//     const data = await getDocs(q);
-//     const monitors = [];
-//     data.forEach((monitor) => {
-//       monitors.push({
-//         ...monitor.data(),
-//       });
-//     });
-//     dispatch(searchMonitorSync(monitors));
-//   };
-// };
+export const searchMonitorAsync = (monitor) => {
+  return async (dispatch) => {
+    const collectionMonitors = collection(db, "monitors");
+    const q = query(
+      collectionMonitors,
+      where("name", ">=", monitor),
+      where("name", "<=", monitor + "~")
+    );
+    const data = await getDocs(q);
+    const monitors = [];
+    data.forEach((monitor) => {
+      monitors.push({
+        id: monitor.id,
+        ...monitor.data(),
+      });
+    });
+    dispatch(searchMonitorSync(monitors));
+  };
+};
 
 export const editMonitorSync = (monitor) => {
   return {
@@ -112,15 +113,15 @@ const deleteMonitorSync = (monitor) => {
   };
 };
 
-export const deleteMonitorAsync = (id) => {
+export const deleteMonitorAsync = (dni) => {
   return async (dispatch) => {
     const collectionMonitors = collection(db, "monitors");
-    const q = query(collectionMonitors, where("id", "==", id));
+    const q = query(collectionMonitors, where("dni", "==", dni));
     const data = await getDocs(q);
     data.forEach((monitor) => {
       deleteDoc(doc(db, "monitors", monitor.id));
     });
-    dispatch(deleteMonitorSync(id));
+    dispatch(deleteMonitorSync(dni));
     dispatch(getMonitorsAsync());
   };
 };

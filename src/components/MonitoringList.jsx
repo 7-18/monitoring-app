@@ -39,7 +39,7 @@ export const Monitoring = () => {
   return (
     <CardDiv>
       <Container>
-        <Row xs={1} md={3} sm={2} className="g-4">
+        <Row xs={4} md={3} sm={2} className="g-4">
           {subjects.length > 0 ? (
             <>
               {subjects.map((monitorias) => (
