@@ -7,7 +7,6 @@ import {
   orderBy,
   query,
   updateDoc,
-  where,
 } from "firebase/firestore";
 import { db } from "../../firebase/firebase.config";
 import { typesMonitoring } from "../types/types";

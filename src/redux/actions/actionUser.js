@@ -1,6 +1,5 @@
 import {
   createUserWithEmailAndPassword,
-  getAuth,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
