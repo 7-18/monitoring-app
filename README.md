@@ -14,9 +14,6 @@
     <img title="React-Bootstrap" alt="React-Bootstrap badge" src="https://img.shields.io/badge/2.4.0-React--Bootstrap-lightgrey" />
   </a>
   <a target="_blank" href="https://getbootstrap.com/">
-    <img title="Vitest" alt="Vitest badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Ferianvc.github.io%2Fapi%2Fweather-app%2Fbadges%2Fvitest%2F" />
-  </a>
-  <a target="_blank" href="https://playwright.dev/">
     <img title="Bootstrap" alt="Bootstrap badge" src="https://img.shields.io/badge/5.2v-Bootstrap-blueviolet" />
   </a>
 </div>
