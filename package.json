@@ -1,6 +1,7 @@
 {
   "name": "monitoring-app",
   "version": "0.1.0",
+  "description": "A application to coordinate your university monitors, subjects and classes.",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
@@ -30,6 +31,10 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "author": "Kevin Brian Briceno",
+  "gitHub": "7-18",
+  "license": "ISC",
+  "homepage": "https://github.com/7-18/monitoring-app#readme",
   "eslintConfig": {
     "extends": [
       "react-app",
