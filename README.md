@@ -85,9 +85,11 @@ npm install
 </div>
 
 # 🎈 Thanks for reading
+
 Take a look at my [Github](https://github.com/7-18/)
 
 ## 💎 Deploy
+
 - [Firebase](https://monitoring-test-be084.web.app/)
 - [Vercel](https://monitoring-app-gray.vercel.app/)
 ## 😃👍 Show your support
