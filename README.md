@@ -21,8 +21,11 @@
   <a target="_blank" href="https://github.com/7-18/monitoring-app">
     <img title="Kevin Brian Briceno" alt="7-18 badge" src="https://img.shields.io/badge/7--18-GitHub-black" />
   </a>
+  <a target="_blank" href="https://monitoring-test-be084.web.app/">
+    <img title="Firebase" alt="Firebase badge" src="https://img.shields.io/badge/Monitoring%20App-Firebase-orange" />
+  </a>
   <a target="_blank" href="https://github.com/7-18/monitoring-app">
-    <img title="Firebase" alt="Firbase badge" src="https://img.shields.io/badge/Monitoring%20App-Firebase-orange" />
+    <img title="Vercel" alt="Vercel badge" src="https://img.shields.io/badge/Monitoring%20App-Vercel-ff69b4" />
   </a>
 </div>
 
@@ -82,7 +85,11 @@ npm install
 </div>
 
 # 🎈 Thanks for reading
+Take a look at my [Github](https://github.com/7-18/)
 
+## 💎 Deploy
+- [Firebase](https://monitoring-test-be084.web.app/)
+- [Vercel](https://monitoring-app-gray.vercel.app/)
 ## 😃👍 Show your support
 
 Give a ⭐️ if you liked it!
