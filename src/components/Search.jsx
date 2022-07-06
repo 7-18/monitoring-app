@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { searchMonitorAsync } from "../redux/actions/actionMonitors";
 import { DivForms, FormStyled, InputStyled } from "../styles/FormsStyles";
-import { Button } from "react-bootstrap";
 import { List } from "./List";
 import { FilterButton } from "../styles/GlobalStyles";
 
