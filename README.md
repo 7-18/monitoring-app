@@ -24,7 +24,7 @@
   <a target="_blank" href="https://monitoring-test-be084.web.app/">
     <img title="Firebase" alt="Firebase badge" src="https://img.shields.io/badge/Monitoring%20App-Firebase-orange" />
   </a>
-  <a target="_blank" href="https://github.com/7-18/monitoring-app">
+  <a target="_blank" href="https://monitoring-app-gray.vercel.app/">
     <img title="Vercel" alt="Vercel badge" src="https://img.shields.io/badge/Monitoring%20App-Vercel-ff69b4" />
   </a>
 </div>
