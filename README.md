@@ -1,91 +1,70 @@
-<div align="center">
-  <a target="_blank" target="https://res.cloudinary.com/divjxvhtz/image/upload/v1657075144/CRUD-heroku/login_gwkmhs.png">
-    <img alt="Monitoring App" title="Monitoring App" src="https://res.cloudinary.com/divjxvhtz/image/upload/v1657075144/CRUD-heroku/login_gwkmhs.png" />
-  <a/>
-</div>
+# Getting Started with Create React App
 
-<br />
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-<div align="center">
-  <a target="_blank" href="https://reactjs.org/">
-    <img title="React" alt="React badge" src="https://img.shields.io/badge/18.2.0-React-blue" />
-  </a>
-  <a target="_blank" href="https://react-bootstrap.netlify.app/">
-    <img title="React-Bootstrap" alt="React-Bootstrap badge" src="https://img.shields.io/badge/2.4.0-React--Bootstrap-lightgrey" />
-  </a>
-  <a target="_blank" href="https://getbootstrap.com/">
-    <img title="Vitest" alt="Vitest badge" src="https://img.shields.io/endpoint?url=https%3A%2F%2Ferianvc.github.io%2Fapi%2Fweather-app%2Fbadges%2Fvitest%2F" />
-  </a>
-  <a target="_blank" href="https://playwright.dev/">
-    <img title="Bootstrap" alt="Bootstrap badge" src="https://img.shields.io/badge/5.2v-Bootstrap-blueviolet" />
-  </a>
-</div>
-<div align="center">
-  <a target="_blank" href="https://github.com/7-18/monitoring-app">
-    <img title="Kevin Brian Briceno" alt="7-18 badge" src="https://img.shields.io/badge/7--18-GitHub-black" />
-  </a>
-  <a target="_blank" href="https://github.com/7-18/monitoring-app">
-    <img title="Firebase" alt="Firbase badge" src="https://img.shields.io/badge/Monitoring%20App-Firebase-orange" />
-  </a>
-</div>
+## Available Scripts
 
-<br/>
+In the project directory, you can run:
 
-<div align="center">
-  A application to coordinate your university monitors, subjects and classes.
-  <br />
-  You can create, update, delete and see the data of your monitors and the classes.
-</div>
+### `npm start`
 
-## 🎨 Design
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-Design 100% with imagination and passion.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## 🦾 Technologies
+### `npm test`
 
-- [React](https://reactjs.org/)
-- [StyledComponents](https://styled-components.com/)
-- [React Bootstrap](https://react-bootstrap.netlify.app/)
-- [Bootstrap](https://getbootstrap.com/)
-- [Firebase](https://firebase.google.com/)
-- [Vercel](https://vercel.com/)
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-## 🚀 Get Started
+### `npm run build`
 
-You need to be using:
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-- [Git](https://git-scm.com/downloads)
-- [Nodejs v16 or higher](https://nodejs.org/es/download/)
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-Clone the repository & install dependencies:
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-```bash
-git clone git@github.com:7-18/monitoring-app.git
-cd monitoring-app
-npm install
-```
+### `npm run eject`
 
-## 💻 You can
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-- ### Create
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-<div align="center">
-<img title="Create" alt="Create" src="https://res.cloudinary.com/divjxvhtz/image/upload/v1657075134/CRUD-heroku/subjects_gaczrt.png" />
-</div>
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-- ### See
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-<div align="center">
-<img title="See the information" alt="See get the information" src="https://res.cloudinary.com/divjxvhtz/image/upload/v1657075149/CRUD-heroku/monitoring_xoxz4r.png" />
-</div>
+## Learn More
 
-- ### Update & Delete
-<div align="center">
-<img title="Update & Delete" alt="Update & Delete" src="https://res.cloudinary.com/divjxvhtz/image/upload/v1657075147/CRUD-heroku/monitor_yqtuvp.png" />
-</div>
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-# 🎈 Thanks for reading
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-## 😃👍 Show your support
+### Code Splitting
 
-Give a ⭐️ if you liked it!
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
